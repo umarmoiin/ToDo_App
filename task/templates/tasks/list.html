@@ -1,5 +1,14 @@
-<h3> To-Do</h3>
+<center><h1> To-Do</h1> 
 
+<h2>To search</h2>
+<form action="{% url 'search' %}" method="get">
+    <input type="text" name="search"/>
+    <button type="submit"> Search</button>
+</form> 
+
+    <br> 
+
+<h2>To Update</h2>
 <form method="post" action="/">
     {% csrf_token %}
     {{form.title}}
@@ -13,3 +22,5 @@
         <p>{{task}}</p>
     </div>
 {% endfor %}
+
+</center>

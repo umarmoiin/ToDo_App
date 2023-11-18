@@ -3,6 +3,7 @@ from django.http import HttpResponse
 
 from .models import *
 from .forms import *
+from task.models import Task
 
 # Create your views here.
 def index(request):
@@ -40,4 +41,10 @@ def deleteTask(request, pk):
 
     context = {'item': item}
     return render(request, 'tasks/delete.html', context)
+
+def searchbar(request):
+   if request.method == 'GET':
+    search = request.GET.get('search')
+    post = Task.objects.all().filter(title__contains=search)
+    return render(request, 'tasks/searchbar.html', {'post': post})
     
